@@ -6,12 +6,17 @@ pipeline {
       VERSION = version()
     }
     stages {
+        stage('Notification') {
+            agent any
+            steps {
+                notifyPipelineStart()
+            }
+        }
         stage('Skaffold Build') {
             agent {
                 label "lead-toolchain-skaffold"
             }
             steps {
-                notifyPipelineStart()
                 notifyStageStart()
                 container('skaffold') {
                     sh "skaffold build"
