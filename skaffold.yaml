@@ -13,10 +13,11 @@ deploy:
         image.repository: ignitelab-csuc-slackbot-lab3
 profiles:
 - name: staging
+  build:
+    tagPolicy:
+      envTemplate:
+        template: "{{.IMAGE_NAME}}:{{.VERSION}}"
   patches:
-  - op: add
-    path: /build/tagPolicy/envTemplate/template
-    value: "{{.IMAGE_NAME}}:{{.VERSION}}"
   - op: add
     path: /deploy/helm/releases/0/setValueTemplates
     value: 

@@ -4,6 +4,7 @@ pipeline {
     agent any
     environment {
       VERSION = version()
+      START = notifyPipelineStart()
     }
     stages {
         stage('Skaffold Build') {
@@ -11,7 +12,6 @@ pipeline {
                 label "lead-toolchain-skaffold"
             }
             steps {
-                notifyPipelineStart()
                 notifyStageStart()
                 container('skaffold') {
                     sh "skaffold build"
@@ -29,6 +29,9 @@ pipeline {
         stage('Skaffold Deploy') {
             agent {
                 label "lead-toolchain-skaffold"
+            }
+            when {
+                branch 'master'
             }
             environment {
                 TILLER_NAMESPACE = "${stagingNamespace}"
