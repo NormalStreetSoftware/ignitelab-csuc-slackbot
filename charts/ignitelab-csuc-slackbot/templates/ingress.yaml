@@ -19,15 +19,10 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-  {{- range .Values.ingress.hosts }}
-    - host: {{ .host | quote }}
+    - host: {{ .Values.ingress.host | quote }}
       http:
         paths:
-        {{- range .paths }}
-          - path: {{ . }}
-            backend:
-              serviceName: ignitelab-csuc-slackbot
-              servicePort: http
-        {{- end }}
-  {{- end }}
+        - backend:
+            serviceName: ignitelab-csuc-slackbot
+            servicePort: http
 {{- end }}
