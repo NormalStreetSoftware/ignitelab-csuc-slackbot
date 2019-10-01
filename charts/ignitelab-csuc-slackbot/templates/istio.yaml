@@ -11,7 +11,7 @@ spec:
     - {{ .Values.ingress.host }}
     port:
       name: http
-      number: 3000
+      number: 80
       protocol: HTTP
 ---
 apiVersion: networking.istio.io/v1alpha3
@@ -29,7 +29,7 @@ spec:
         prefix: "/"
     route:
     - destination:
-        host: {{ .Values.ingress.host }}
+        host: ignitelab-csuc-slackbot
         port:
           number: 3000
 {{- end }}
