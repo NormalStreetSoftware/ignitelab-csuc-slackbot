@@ -48,5 +48,6 @@ pipeline {
     }
 }
 def version() {
-    return sh(script: "git fetch --all --tags && git describe --tags --dirty", returnStdout: true).trim();
+    sh(script: "git fetch --all --tags && git describe --tags --dirty")
+    return sh(script: "git fetch --all --tags && git describe --tags --dirty", returnStdout: true).trim()
 }
