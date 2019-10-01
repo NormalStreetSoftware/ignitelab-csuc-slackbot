@@ -22,3 +22,4 @@ profiles:
     value: 
       ingress.enabled: true
       ingress.host: ignitelab-csuc-slackbot.{{.stagingDomain}}
+      ingress.annotations[0]kubernetes.io/ingress.class: nginx
