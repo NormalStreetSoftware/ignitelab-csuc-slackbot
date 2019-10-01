@@ -13,5 +13,9 @@
     "botkit": "^4.5.0",
     "botkit-plugin-cms": "^1.0.2",
     "dotenv": "^7.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.1",
+    "mocha-eslint": "^5.0.0"
   }
 }
