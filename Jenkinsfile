@@ -30,6 +30,9 @@ pipeline {
             agent {
                 label "lead-toolchain-skaffold"
             }
+            when {
+                branch 'master'
+            }
             environment {
                 TILLER_NAMESPACE = "${stagingNamespace}"
             }
