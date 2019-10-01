@@ -1,9 +1,6 @@
 apiVersion: skaffold/v1beta14
 kind: Config
 build:
-  tagPolicy:
-    envTemplate:
-      template: "{{.IMAGE_NAME}}:{{.VERSION}}"  
   artifacts:
   - image: ignitelab-csuc-slackbot-lab3
     context: .
@@ -17,6 +14,9 @@ deploy:
 profiles:
 - name: staging
   patches:
+  - op: add
+    path: /build/tagPolicy/envTemplate/template
+    value: "{{.IMAGE_NAME}}:{{.VERSION}}"
   - op: add
     path: /deploy/helm/releases/0/setValueTemplates
     value: 
