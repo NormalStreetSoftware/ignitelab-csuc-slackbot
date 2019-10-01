@@ -30,6 +30,9 @@ pipeline {
             agent {
                 label "lead-toolchain-skaffold"
             }
+            environment {
+                TILLER_NAMESPACE = "${stagingNamespace}"
+            }
             steps {
                 notifyStageStart()
                 container('skaffold') {
