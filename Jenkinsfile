@@ -33,7 +33,7 @@ pipeline {
             steps {
                 notifyStageStart()
                 container('skaffold') {
-                    sh "skaffold deploy"
+                    sh "skaffold deploy --images ignitelab-csuc-slackbot-lab3:${VERSION}"
                 }
             }
             post {
