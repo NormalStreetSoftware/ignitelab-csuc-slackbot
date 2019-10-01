@@ -1,0 +1,13 @@
+apiVersion: skaffold/v1beta14
+kind: Config
+build:
+  artifacts:
+  - image: ignitelab-csuc-slackbot
+    context: .
+deploy:
+  helm:
+    releases:
+    - name: ignitelab-csuc-slackbot
+      chartPath: charts/ignitelab-csuc-slackbot
+      values:
+        image.repository: ignitelab-csuc-slackbot
