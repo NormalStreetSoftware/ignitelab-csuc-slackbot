@@ -33,7 +33,7 @@ pipeline {
             steps {
                 notifyStageStart()
                 container('skaffold') {
-                    sh "skaffold deploy --images artifactory.toolchain.lead.lab.ignitecsuc.com/docker-registry/scribbles-lab/ignitelab-csuc-slackbot-lab3:${VERSION}"
+                    sh "skaffold deploy --namespace ${stagingNamespace} --images ${SKAFFOLD_DEFAULT_REPO}/ignitelab-csuc-slackbot-lab3:${VERSION}"
                 }
             }
             post {
@@ -48,5 +48,5 @@ pipeline {
     }
 }
 def version() {
-    return sh(script: "git describe --tags --dirty", returnStdout: true).trim();
+    return sh(script: "git fetch --all --tags && git describe --tags --dirty", returnStdout: true).trim();
 }
