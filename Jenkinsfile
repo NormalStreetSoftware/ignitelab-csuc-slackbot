@@ -49,6 +49,9 @@ pipeline {
                 failure {
                     notifyStageEnd([result: "fail"])
                 }
+                aborted {
+                    notifyStageEnd([result: "skipped"])
+                }
             }
         }
     }
