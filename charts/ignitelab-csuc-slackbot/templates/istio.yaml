@@ -29,7 +29,7 @@ spec:
         prefix: "/"
     route:
     - destination:
-        host: ignitelab-csuc-slackbot
+        host: {{ .Values.ingress.host }}
         port:
           number: 3000
 {{- end }}
