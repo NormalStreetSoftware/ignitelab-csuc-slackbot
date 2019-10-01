@@ -3,10 +3,10 @@ FROM node:12.10-alpine AS tester
 WORKDIR /app
 
 COPY package*.json .eslintrc.js bot.js ./
+RUN npm install
+
 COPY test ./test
 COPY features ./features
-
-RUN npm install
 
 RUN node ./node_modules/.bin/mocha
 
