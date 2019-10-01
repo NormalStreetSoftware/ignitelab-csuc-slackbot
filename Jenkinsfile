@@ -4,14 +4,9 @@ pipeline {
     agent any
     environment {
       VERSION = version()
+      START = notifyPipelineStart()
     }
     stages {
-        stage('Notification') {
-            agent any
-            steps {
-                notifyPipelineStart()
-            }
-        }
         stage('Skaffold Build') {
             agent {
                 label "lead-toolchain-skaffold"
