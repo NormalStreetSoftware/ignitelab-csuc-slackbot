@@ -15,8 +15,9 @@ profiles:
 - name: staging
   patches:
   - op: add
-    path: /build/tagPolicy/envTemplate/template
-    value: "{{.IMAGE_NAME}}:{{.VERSION}}"
+    path: /build/tagPolicy/envTemplate
+    value: 
+      template: "{{.IMAGE_NAME}}:{{.VERSION}}"
   - op: add
     path: /deploy/helm/releases/0/setValueTemplates
     value: 
