@@ -33,7 +33,7 @@ pipeline {
             steps {
                 notifyStageStart()
                 container('skaffold') {
-                    sh "skaffold deploy --images ignitelab-csuc-slackbot-lab3:${VERSION}"
+                    sh "skaffold deploy --images artifactory.toolchain.lead.lab.ignitecsuc.com/docker-registry/scribbles-lab/ignitelab-csuc-slackbot-lab3:${VERSION}"
                 }
             }
             post {
