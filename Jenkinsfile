@@ -14,7 +14,7 @@ pipeline {
             steps {
                 notifyStageStart()
                 container('skaffold') {
-                    sh "skaffold build"
+                    sh "skaffold build --profile staging"
                 }
             }
             post {
@@ -48,9 +48,6 @@ pipeline {
                 }
                 failure {
                     notifyStageEnd([result: "fail"])
-                }
-                aborted {
-                    notifyStageEnd([result: "skipped"])
                 }
             }
         }
