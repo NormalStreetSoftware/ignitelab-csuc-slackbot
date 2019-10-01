@@ -36,7 +36,7 @@ pipeline {
             steps {
                 notifyStageStart()
                 container('skaffold') {
-                    sh "skaffold deploy --namespace ${stagingNamespace} --images ${SKAFFOLD_DEFAULT_REPO}/ignitelab-csuc-slackbot-lab3:${VERSION}"
+                    sh "skaffold deploy --profile staging --namespace ${stagingNamespace} --images ${SKAFFOLD_DEFAULT_REPO}/ignitelab-csuc-slackbot-lab3:${VERSION}"
                 }
             }
             post {

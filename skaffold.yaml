@@ -14,3 +14,12 @@ deploy:
       chartPath: charts/ignitelab-csuc-slackbot
       values:
         image.repository: ignitelab-csuc-slackbot-lab3
+profiles:
+- name: staging
+  patches:
+  - op: add
+    path: /deploy/helm/releases/0/values/ingress.enabled
+    value: true
+  - op: add
+    path: /deploy/helm/releases/0/values/ingress.hosts.0.host
+    value: ignitelab-csuc-slackbot.{{.stagingDomain}}
